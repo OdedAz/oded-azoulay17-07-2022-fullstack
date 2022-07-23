@@ -1,0 +1,1 @@
+in order to run the DB on docker you need to run this command in the terminal
