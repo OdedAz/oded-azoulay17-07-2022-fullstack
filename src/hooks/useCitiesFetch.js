@@ -4,18 +4,19 @@ const endpoint = 'auto_complete';
 
 export const useCitiesFetch = () => {
   const [cities, setCities] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isCitiesLoading, setIsLoading] = useState(false);
 
   const fetchCitiesList = async (textToSearch) => {
       try {
           setIsLoading(true);
           const response = await getData(endpoint, {textToSearch: textToSearch});
           setCities(response|| [])
+          setIsLoading(false);
       } catch (error) {
           console.error("fetching cities fro server", error);
           return [];
       }
   };
 
-  return { cities, isLoading , fetchCitiesList};
+  return { cities, isCitiesLoading , fetchCitiesList};
 };

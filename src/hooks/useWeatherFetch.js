@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useCallback } from "react";
+import { useState } from "react";
 
 export const useWeatherFetch = (cityKey) => {
   const [citiesWeatherInfo, setCitiesWeatherInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isCitiesWeatherLoading, setIsCitiesWeatherLoading] = useState(false);
   const fetchCityWeatherInfo = async (cityKey) => {
     if (cityKey)
       try {
-        setIsLoading(true);
+        setIsCitiesWeatherLoading(true);
         // const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}`);
         const response = [
           {
@@ -20,17 +18,13 @@ export const useWeatherFetch = (cityKey) => {
           },
         ];
         setCitiesWeatherInfo(response || []);
-        setIsLoading(false);
+        setIsCitiesWeatherLoading(false);
+        console.log()
       } catch (error) {
         console.error("fetching cities fro server", error);
         return [];
       }
   };
 
-  // useEffect(() => {
-  //   const { cityWeatherInfo } = fetchCityWeatherInfo(cityKey);
-  //   console.log({ cityWeatherInfo });
-  // }, [cityKey, fetchCityWeatherInfo]);
-
-  return { citiesWeatherInfo, isLoading , fetchCityWeatherInfo};
+  return { citiesWeatherInfo, isCitiesWeatherLoading , fetchCityWeatherInfo};
 };
