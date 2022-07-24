@@ -4,59 +4,29 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
-import { useWeatherFetch } from "../hooks/useWeatherFetch";
-
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
-// import Divider from "@mui/material/Divider";
-// import InboxIcon from "@mui/icons-material/Inbox";
-// import DraftsIcon from "@mui/icons-material/Drafts";
-
-export default function CitiesWeatherCardsList() {
-  const { cityWeatherInfo, isLoading } = useWeatherFetch()
+export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
+  if (!citiesWeatherInfo?.length) {
+    return (
+      <div className="cities-cards-list-wrapper">
+        <Box sx={{ width: "100%", height: "60%" }}></Box>
+      </div>
+    );
+  }
   return (
     <div className="cities-cards-list-wrapper">
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", height: "60%" }}>
         <nav aria-label="main mailbox folders">
           <List>
-            {/* <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Inbox" />
-            </ListItemButton>
-          </ListItem> */}
-            <ListItem disablePadding>
-              <CityWeatherCard />
-            </ListItem>
-            <ListItem disablePadding>
-              <CityWeatherCard />
-            </ListItem>
-            <ListItem disablePadding>
-              <CityWeatherCard />
-            </ListItem>
-            <ListItem disablePadding>
-              <CityWeatherCard />
-            </ListItem>
+            {citiesWeatherInfo?.map((cityWeatherInfo) => {
+              console.log({cityWeatherInfo})
+              return (
+                <ListItem disablePadding key={cityWeatherInfo.Key}>
+                  <CityWeatherCard cityWeatherInfo={cityWeatherInfo}/>
+                </ListItem>
+              );
+            })}
           </List>
         </nav>
-        {/* <Divider />
-      <nav aria-label="secondary mailbox folders">
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Trash" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemText primary="Spam" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </nav> */}
       </Box>
     </div>
   );

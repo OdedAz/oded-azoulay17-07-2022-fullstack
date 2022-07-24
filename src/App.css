@@ -43,7 +43,7 @@
   border-radius: 0%;
   border-right: 3px black solid;
   padding-right: 10%;
-
+  min-height: 20rem;
 }
 .App .search-field-wrapper {
   margin-left: 30%;
@@ -51,7 +51,7 @@
 }
 
 .cities-cards-list-wrapper .city-card {
-  margin-bottom: 5% ;
+  margin-bottom: 5%;
   width: 100%;
   border: 1px black solid;
   margin-left: 2%;
@@ -59,24 +59,28 @@
 }
 
 .cities-cards-list-wrapper .city-card .card-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: inline-flex;
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0; */
+  /* display: inline-flex; */
   padding: 10px;
-  height: 80%;
-  width: 55%;
+  /* height: 80%; */
+  /* width: 55%; */
+}
+
+.cities-cards-list-wrapper .city-card .card-content .left-grid {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.cities-cards-list-wrapper .city-card .card-content .right-grid {
+  display: inline-flex;
 }
 
 .cities-cards-list-wrapper .city-card .card-content svg {
   margin-left: 10%;
   margin-top: 5%;
   fill: red;
-}
-
-.cities-cards-list-wrapper .city-card .card-content button {
-  margin-left: 10%;
-  margin-bottom: 5%;
 }
 
 .results-cards-list-wrapper {

@@ -4,7 +4,6 @@ import Grid from "@mui/material/Grid";
 import {useState} from "react";
 
 export default function SearchField({ fetchCitiesList }) {
-//   console.log("SearchField activated")
   const [textToSearch, setTextToSearch] = useState("");
 
   function onChangeHandler(e) {
