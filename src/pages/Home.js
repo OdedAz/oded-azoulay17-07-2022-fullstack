@@ -13,6 +13,8 @@ const Home = () => {
   const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } = useWeatherFetch();
   console.log("here");
   console.log({citiesWeatherInfo});
+  console.log("Home rendered")
+
   return (
     <div>
       <Box>

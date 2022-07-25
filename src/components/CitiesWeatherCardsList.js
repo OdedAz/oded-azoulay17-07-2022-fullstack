@@ -5,27 +5,23 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
-
-  if (!citiesWeatherInfo?.length) {
+  console.log("cities weather info: ", citiesWeatherInfo)
+  if (!citiesWeatherInfo?.cityKey) {
     return (
       <div className="cities-cards-list-wrapper">
         <Box sx={{ width: "100%", height: "60%" }}></Box>
       </div>
     );
   }
+  console.log("CitiesWeatherCardsList rendered");
   return (
     <div className="cities-cards-list-wrapper">
       <Box sx={{ width: "100%", height: "60%" }}>
         <nav aria-label="main mailbox folders">
           <List>
-            {citiesWeatherInfo?.map((cityWeatherInfo) => {
-              console.log({cityWeatherInfo})
-              return (
-                <ListItem disablePadding key={cityWeatherInfo.cityKey}>
-                  <CityWeatherCard cityWeatherInfo={cityWeatherInfo}/>
-                </ListItem>
-              );
-            })}
+            <ListItem disablePadding>
+              <CityWeatherCard {...citiesWeatherInfo} />
+            </ListItem>
           </List>
         </nav>
       </Box>
