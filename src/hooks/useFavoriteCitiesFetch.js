@@ -1,37 +1,31 @@
 
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useUpdateEffect } from "ahooks";
-import { useCallback } from "react";
+import { useState } from "react";
+import {getData, onDelete} from "../api/api.proxy";
+const endpoint = 'favorite_cities';
 
 export const useFavoriteCitiesFetch = (props) => {
-  // const [cities, setCities] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [page, setPage] = useState(0);
-  // const increasePage = () => {
-  //  setPage((prev) => prev + 1);
-  // }
-  // const fetchCities = useCallback(async () => {
-  //   setIsLoading(true);
-  //   const response = await axios.get(
-  //     `http://localhost:3000/auto_complete`,
-  //     { params:  props.textToSearch }
-  //   );
-  //   if (response && response.data && response.data.results) {
-  //       setCities((prevUsers) => prevUsers.concat(response.data.results));
-  //   } else {
-  //     // handle error situation
-  //   }
-  // });
+  const [favoriteCities, setFavoriteCities] = useState([]);
+  const [isFavorieCitiesLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //     fetchCities();
-  // }, [fetchCities]);
+  const fetchFavoriteCitiesList = async () => {
+      try {
+          setIsLoading(true);
+          const response = await getData(endpoint);
+          setFavoriteCities(response|| [])
+          setIsLoading(false);
+      } catch (error) {
+          console.error("fetching cities fro server", error);
+          return [];
+      }
+  };
+  const deleteCityFromFavoritsDB = async (id) => {
+    try {
+      const response = await onDelete(endpoint,{params: {id:id}})
+      console.log({response})
+    } catch(error) {
+      console.error(error)
+    }
+  }
 
-  // useUpdateEffect(() => {
-  //   setIsLoading(false);
-  // }, [cities]);
-
-  // return { cities, isLoading, fetchCities, increasePage };
-  return "useFavoriteCitiesFetch test"
+  return { favoriteCities, isFavorieCitiesLoading , setFavoriteCities, fetchFavoriteCitiesList, deleteCityFromFavoritsDB};
 };

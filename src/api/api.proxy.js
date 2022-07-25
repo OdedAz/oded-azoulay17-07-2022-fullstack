@@ -12,3 +12,7 @@ export const getData = (url, params = {}, headers = {}) =>
         .get(url, { ...headers, params: params })
         .then(extractData, res => extractData(res?.response))
         .catch(extractErrorData);
+
+export const onDelete = api.delete;
+console.log({api})
+export const postBody = (...args) => api.post.apply(api, args).then(extractData);

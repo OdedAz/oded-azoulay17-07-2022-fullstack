@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCitiesFetch } from "../hooks/useCitiesFetch";
 import { useWeatherFetch } from "../hooks/useWeatherFetch";
 // import CityCard from "../components/CityCard";
@@ -9,10 +9,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 const Home = () => {
-  // const [cityWeatherInformation, setCityWeatherInformation] = useState({});
   const { cities, isCitiesLoading, fetchCitiesList } = useCitiesFetch();
   const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } = useWeatherFetch();
-  console.log(citiesWeatherInfo);
+  console.log("here");
+  console.log({citiesWeatherInfo});
   return (
     <div>
       <Box>

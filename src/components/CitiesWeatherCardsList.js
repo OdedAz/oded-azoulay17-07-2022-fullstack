@@ -5,6 +5,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
+
   if (!citiesWeatherInfo?.length) {
     return (
       <div className="cities-cards-list-wrapper">
@@ -20,7 +21,7 @@ export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
             {citiesWeatherInfo?.map((cityWeatherInfo) => {
               console.log({cityWeatherInfo})
               return (
-                <ListItem disablePadding key={cityWeatherInfo.Key}>
+                <ListItem disablePadding key={cityWeatherInfo.cityKey}>
                   <CityWeatherCard cityWeatherInfo={cityWeatherInfo}/>
                 </ListItem>
               );

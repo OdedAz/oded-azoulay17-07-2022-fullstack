@@ -5,7 +5,7 @@ const endpoint = 'auto_complete';
 export const useCitiesFetch = () => {
   const [cities, setCities] = useState([]);
   const [isCitiesLoading, setIsLoading] = useState(false);
-
+    console.log({cities})
   const fetchCitiesList = async (textToSearch) => {
       try {
           setIsLoading(true);

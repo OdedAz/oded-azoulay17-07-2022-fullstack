@@ -10,7 +10,7 @@ const CityNameCard = ({
   function onClickHandller(e) {
     // here i need to fetch the city data
     // and to use setCity to change the city data.
-    fetchCityWeatherInfo(e.target.id);
+    fetchCityWeatherInfo(e.target.id,e.target.innerText);
   }
   return (
     <ListItem disablePadding key={cityKey}>

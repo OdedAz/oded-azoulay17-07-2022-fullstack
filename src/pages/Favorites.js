@@ -5,6 +5,7 @@ import ResultSearchCitiesList from "../components/CitiesNamesList";
 import Grid from "@mui/material/Grid";
 
 const Favorites = () => {
+  
   return (
     <div>
       <h1>Favorites</h1>
