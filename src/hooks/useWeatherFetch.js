@@ -11,16 +11,6 @@ export const useWeatherFetch = (cityKey) => {
         setIsCitiesWeatherLoading(true);
         const response = await getData(endpoint,{cityKey});
         response.localizedName = cityName;
-        console.log({response})
-        // const response = [
-        //   {
-        //     id: 1234,
-        //     Key: "215854",
-        //     LocalizedName: "Tel Aviv",
-        //     weather_status: "Sunny",
-        //     degrees: 29,
-        //   },
-        // ];
         setCitiesWeatherInfo(response || []);
         setIsCitiesWeatherLoading(false);
       } catch (error) {

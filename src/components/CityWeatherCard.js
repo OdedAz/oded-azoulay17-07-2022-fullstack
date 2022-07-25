@@ -3,14 +3,16 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
 const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
+  console.log("CityWeatherCard is rendered")
   const [isLiked, setIsLiked] = useState(false);
   const iconToShow = isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />;
-  const { favoriteCities, setFavoriteCities, createCityInFavoritesDB } =
+  const { favoriteCities, setFavoriteCities, createCityInFavoritesDB, deleteCityFromFavoritsDB } =
     useFavoriteCitiesFetch();
+ 
   const favoritClickHandler = (e) => {
     if (isLiked) {
       setIsLiked(false);
@@ -18,9 +20,8 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
       const indexOfCity = favoriteCities.indexOf((city) => city.id === id);
       newReducedArray.splice(indexOfCity, 1);
       setFavoriteCities(newReducedArray);
-      console.log("here: ", favoriteCities);
       // delete from DB
-      // deleteCityFromFavoritsDB(cityWeatherInfo.id)
+      deleteCityFromFavoritsDB(id)
       // fetch favorite cities again
     } else {
       setIsLiked(true);
@@ -30,16 +31,21 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
           ...favoriteCities,
           { id, localizedName, degrees, weatherStatus },
         ];
+        setFavoriteCities(newFavoritesArray);
+        const city = { id, localizedName, degrees, weatherStatus }
         createCityInFavoritesDB({
-          city: { id, localizedName, degrees, weatherStatus },
+          city ,
         });
-        console.log({ newFavoritesArray });
       }
     }
     // here we need to send request to add to db to favorite_cities table
     // then we need to fetch
   };
-
+  useEffect(()=>{
+    const isInFavorites = favoriteCities.some(favoriteCity => favoriteCity.id === id);
+    setIsLiked(isInFavorites)
+  },[favoriteCities,id])
+  console.log("CityWeatherCard - CityWeatherCard : ", favoriteCities)
   return (
     <Card sx={{ maxWidth: 400 }} className="city-card">
       {/* <CardHeader title={cityWeatherInfo.LocalizedName}></CardHeader> */}

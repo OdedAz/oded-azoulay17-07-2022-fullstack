@@ -11,9 +11,6 @@ import Box from "@mui/material/Box";
 const Home = () => {
   const { cities, isCitiesLoading, fetchCitiesList } = useCitiesFetch();
   const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } = useWeatherFetch();
-  console.log("here");
-  console.log({citiesWeatherInfo});
-  console.log("Home rendered")
 
   return (
     <div>
@@ -29,7 +26,6 @@ const Home = () => {
               citiesNamesList={cities}
               fetchCitiesList={fetchCitiesList}
               fetchCityWeatherInfo={fetchCityWeatherInfo}
-              // setCityWeatherInformation={setCityWeatherInformation}
             />
             {isCitiesLoading ? <div>Loading...</div> : ""}
           </Grid>

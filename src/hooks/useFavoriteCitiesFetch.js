@@ -19,8 +19,7 @@ export const useFavoriteCitiesFetch = (props) => {
   };
   const deleteCityFromFavoritsDB = async (id) => {
     try {
-      const response = await onDelete(endpoint, { params: { id } });
-      console.log({ response });
+      await onDelete(endpoint, { params: { id } });
     } catch (error) {
       console.error(error);
     }
@@ -28,12 +27,12 @@ export const useFavoriteCitiesFetch = (props) => {
 
   const createCityInFavoritesDB = async (city) => {
     try {
-      const response = await postBody(endpoint, city);
-      console.log({ response });
+      await postBody(endpoint, city);
     } catch (error) {
       console.error(error);
     }
   };
+  console.log({favoriteCities})
   return {
     favoriteCities,
     isFavorieCitiesLoading,

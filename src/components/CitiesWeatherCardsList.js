@@ -5,15 +5,14 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
-  console.log("cities weather info: ", citiesWeatherInfo)
-  if (!citiesWeatherInfo?.cityKey) {
+  console.log({citiesWeatherInfo})
+  if (!citiesWeatherInfo?.id) {
     return (
       <div className="cities-cards-list-wrapper">
         <Box sx={{ width: "100%", height: "60%" }}></Box>
       </div>
     );
   }
-  console.log("CitiesWeatherCardsList rendered");
   return (
     <div className="cities-cards-list-wrapper">
       <Box sx={{ width: "100%", height: "60%" }}>
