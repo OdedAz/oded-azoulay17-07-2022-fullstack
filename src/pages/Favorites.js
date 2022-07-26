@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFavoriteCitiesFetch } from "../hooks/useFavoriteCitiesFetch";
 import { useWeatherFetch } from "../hooks/useWeatherFetch";
 import CitiesWeatherCardsList from "../components/CitiesWeatherCardsList";
@@ -10,9 +10,6 @@ const Favorites = () => {
   const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } =
     useWeatherFetch();
 
-  useEffect(() => {
-    fetchFavoriteCitiesList();
-  }, []);
   return (
     <div>
       <Grid container spacing={2}>

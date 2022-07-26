@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { getData, onDelete, postBody } from "../api/api.proxy";
+import { useEffectOnce } from "use-effect-once";
+
 const endpoint = "favorite_cities";
 
 export const useFavoriteCitiesFetch = () => {
@@ -17,6 +19,11 @@ export const useFavoriteCitiesFetch = () => {
       return [];
     }
   };
+
+  useEffectOnce(() => {
+    fetchFavoriteCitiesList();
+  });
+
   const deleteCityFromFavoritsDB = async (id) => {
     try {
       await onDelete(endpoint, { params: { id } });
