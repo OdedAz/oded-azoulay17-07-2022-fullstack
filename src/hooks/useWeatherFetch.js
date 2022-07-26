@@ -1,15 +1,15 @@
 import { useState } from "react";
-import {getData} from "../api/api.proxy";
-const endpoint = 'current_weather';
+import { getData } from "../api/api.proxy";
+const endpoint = "current_weather";
 
 export const useWeatherFetch = (cityKey) => {
   const [citiesWeatherInfo, setCitiesWeatherInfo] = useState({});
   const [isCitiesWeatherLoading, setIsCitiesWeatherLoading] = useState(false);
-  const fetchCityWeatherInfo = async (cityKey,cityName) => {
+  const fetchCityWeatherInfo = async (cityKey, cityName) => {
     if (cityKey)
       try {
         setIsCitiesWeatherLoading(true);
-        const response = await getData(endpoint,{cityKey});
+        const response = await getData(endpoint, { cityKey });
         response.localizedName = cityName;
         setCitiesWeatherInfo(response || []);
         setIsCitiesWeatherLoading(false);
@@ -19,5 +19,5 @@ export const useWeatherFetch = (cityKey) => {
       }
   };
 
-  return { citiesWeatherInfo, isCitiesWeatherLoading , fetchCityWeatherInfo};
+  return { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo };
 };

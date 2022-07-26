@@ -2,15 +2,9 @@ import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 
-const CityNameCard = ({
-  cityKey,
-  name,
-  fetchCityWeatherInfo,
-}) => {
+const CityNameCard = ({ cityKey, name, fetchCityWeatherInfo }) => {
   function onClickHandller(e) {
-    // here i need to fetch the city data
-    // and to use setCity to change the city data.
-    fetchCityWeatherInfo(e.target.id,e.target.innerText);
+    fetchCityWeatherInfo(e.target.id, e.target.innerText);
   }
   return (
     <ListItem disablePadding key={cityKey}>

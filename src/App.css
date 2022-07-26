@@ -45,9 +45,9 @@
   padding-right: 10%;
   min-height: 20rem;
 }
-.App .search-field-wrapper {
-  margin-left: 30%;
-  margin-top: 2%;
+#root .search-field-wrapper {
+  margin-left: 20rem;
+  margin-top: 1rem;
 }
 
 .cities-cards-list-wrapper .city-card {

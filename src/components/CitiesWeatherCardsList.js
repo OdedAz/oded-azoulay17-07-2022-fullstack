@@ -5,7 +5,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 export default function CitiesWeatherCardsList({ citiesWeatherInfo }) {
-  console.log({citiesWeatherInfo})
   if (!citiesWeatherInfo?.id) {
     return (
       <div className="cities-cards-list-wrapper">

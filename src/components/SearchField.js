@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function SearchField({ fetchCitiesList }) {
   const [textToSearch, setTextToSearch] = useState("");
@@ -15,10 +15,9 @@ export default function SearchField({ fetchCitiesList }) {
   }
 
   function onClickHandler(e) {
-      fetchCitiesList(textToSearch);
+    fetchCitiesList(textToSearch);
   }
 
-    
   return (
     <Grid container spacing={4} className="search-field-wrapper">
       <Grid item xs={1}>
@@ -32,7 +31,7 @@ export default function SearchField({ fetchCitiesList }) {
           label="search"
           variant="outlined"
           //   onChange={(e) => onClickHandler(e, setTextToSearch)}
-          onChange={(e)=>onChangeHandler(e)}
+          onChange={(e) => onChangeHandler(e)}
         />
       </Grid>
     </Grid>

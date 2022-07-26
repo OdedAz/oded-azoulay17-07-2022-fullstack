@@ -1,7 +1,6 @@
 import React from "react";
 import { useCitiesFetch } from "../hooks/useCitiesFetch";
 import { useWeatherFetch } from "../hooks/useWeatherFetch";
-// import CityCard from "../components/CityCard";
 import CitiesWeatherCardsList from "../components/CitiesWeatherCardsList";
 import CitiesNamesList from "../components/CitiesNamesList";
 import SearchField from "../components/SearchField";
@@ -10,7 +9,8 @@ import Box from "@mui/material/Box";
 
 const Home = () => {
   const { cities, isCitiesLoading, fetchCitiesList } = useCitiesFetch();
-  const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } = useWeatherFetch();
+  const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } =
+    useWeatherFetch();
 
   return (
     <div>

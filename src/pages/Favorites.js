@@ -1,25 +1,31 @@
 import React, { useEffect } from "react";
 import { useFavoriteCitiesFetch } from "../hooks/useFavoriteCitiesFetch";
-// import CityCard from "../components/CityCard";
+import { useWeatherFetch } from "../hooks/useWeatherFetch";
 import CitiesWeatherCardsList from "../components/CitiesWeatherCardsList";
 import ResultSearchCitiesList from "../components/CitiesNamesList";
 import Grid from "@mui/material/Grid";
 
 const Favorites = () => {
-  const { favoriteCities } = useFavoriteCitiesFetch();
-  useEffect(()=>{
+  const { favoriteCities, fetchFavoriteCitiesList } = useFavoriteCitiesFetch();
+  const { citiesWeatherInfo, isCitiesWeatherLoading, fetchCityWeatherInfo } =
+    useWeatherFetch();
 
-  },[favoriteCities])
-  console.log({ favoriteCities });
+  useEffect(() => {
+    fetchFavoriteCitiesList();
+  }, []);
   return (
     <div>
-      <h1>Favorites</h1>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <CitiesWeatherCardsList />
+          <CitiesWeatherCardsList citiesWeatherInfo={citiesWeatherInfo} />
+          {isCitiesWeatherLoading ? <div>Loading...</div> : ""}
         </Grid>
         <Grid item xs={4}>
-          <ResultSearchCitiesList citiesNamesList={favoriteCities} />
+          <ResultSearchCitiesList
+            citiesNamesList={favoriteCities}
+            fetchCityWeatherInfo={fetchCityWeatherInfo}
+            fetchCitiesList={fetchFavoriteCitiesList}
+          />
         </Grid>
       </Grid>
     </div>

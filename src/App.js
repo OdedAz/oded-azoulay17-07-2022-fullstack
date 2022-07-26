@@ -13,11 +13,6 @@ function App() {
         <Route path="/favorite-cities" element={<Favorites />}></Route>
       </Routes>
     </div>
-
-    // <div className="App">
-    //   <NavBar />
-    //   <Favorites />
-    // </div>
   );
 }
 

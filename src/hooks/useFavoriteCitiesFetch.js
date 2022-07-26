@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getData, onDelete, postBody } from "../api/api.proxy";
 const endpoint = "favorite_cities";
 
-export const useFavoriteCitiesFetch = (props) => {
+export const useFavoriteCitiesFetch = () => {
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [isFavorieCitiesLoading, setIsLoading] = useState(false);
 
@@ -32,13 +32,12 @@ export const useFavoriteCitiesFetch = (props) => {
       console.error(error);
     }
   };
-  console.log({favoriteCities})
   return {
     favoriteCities,
     isFavorieCitiesLoading,
     setFavoriteCities,
     fetchFavoriteCitiesList,
     deleteCityFromFavoritsDB,
-    createCityInFavoritesDB
+    createCityInFavoritesDB,
   };
 };

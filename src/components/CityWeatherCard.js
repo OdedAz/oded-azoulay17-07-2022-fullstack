@@ -7,12 +7,15 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
 const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
-  console.log("CityWeatherCard is rendered")
   const [isLiked, setIsLiked] = useState(false);
   const iconToShow = isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />;
-  const { favoriteCities, setFavoriteCities, createCityInFavoritesDB, deleteCityFromFavoritsDB } =
-    useFavoriteCitiesFetch();
- 
+  const {
+    favoriteCities,
+    setFavoriteCities,
+    createCityInFavoritesDB,
+    deleteCityFromFavoritsDB,
+  } = useFavoriteCitiesFetch();
+
   const favoritClickHandler = (e) => {
     if (isLiked) {
       setIsLiked(false);
@@ -21,7 +24,7 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
       newReducedArray.splice(indexOfCity, 1);
       setFavoriteCities(newReducedArray);
       // delete from DB
-      deleteCityFromFavoritsDB(id)
+      deleteCityFromFavoritsDB(id);
       // fetch favorite cities again
     } else {
       setIsLiked(true);
@@ -32,24 +35,23 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
           { id, localizedName, degrees, weatherStatus },
         ];
         setFavoriteCities(newFavoritesArray);
-        const city = { id, localizedName, degrees, weatherStatus }
+        const city = { id, localizedName, degrees, weatherStatus };
         createCityInFavoritesDB({
-          city ,
+          city,
         });
       }
     }
     // here we need to send request to add to db to favorite_cities table
     // then we need to fetch
   };
-  useEffect(()=>{
-    const isInFavorites = favoriteCities.some(favoriteCity => favoriteCity.id === id);
-    setIsLiked(isInFavorites)
-  },[favoriteCities,id])
-  console.log("CityWeatherCard - CityWeatherCard : ", favoriteCities)
+  useEffect(() => {
+    const isInFavorites = favoriteCities.some(
+      (favoriteCity) => favoriteCity.id === id
+    );
+    setIsLiked(isInFavorites);
+  }, [favoriteCities, id]);
   return (
     <Card sx={{ maxWidth: 400 }} className="city-card">
-      {/* <CardHeader title={cityWeatherInfo.LocalizedName}></CardHeader> */}
-      {/* <CardContent className="card-content"> */}
       <Grid container xs={12} spacing={2} className="card-content">
         <Grid xs={6} className="left-grid">
           <h3>{localizedName}</h3>
@@ -62,8 +64,6 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
           <Button size="small">Add to favorite</Button>
         </Grid>
       </Grid>
-
-      {/* </CardContent> */}
     </Card>
   );
 };
