@@ -61,7 +61,7 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
         </Grid>
         <Grid xs={6} className="right-grid">
           <Button onClick={favoritClickHandler}>{iconToShow}</Button>
-          <Button size="small">Add to favorite</Button>
+          <Button onClick={favoritClickHandler} size="small">Add to favorite</Button>
         </Grid>
       </Grid>
     </Card>
