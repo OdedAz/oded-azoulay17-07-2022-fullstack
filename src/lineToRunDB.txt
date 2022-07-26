@@ -1,1 +1,4 @@
-in order to run the DB on docker you need to run this command in the terminal
+in order to build you tables you will need to run this scripts:
+
+CREATE TABLE [dbo].[cities] ([id] bigint,[weather_status] text,[degrees] tinyint, PRIMARY KEY (id));
+CREATE TABLE [dbo].[favorite_cities] ([id] bigint,[localized_name] text, PRIMARY KEY (id));
