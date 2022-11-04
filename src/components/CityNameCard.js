@@ -3,12 +3,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 
 const CityNameCard = ({ cityKey, name, fetchCityWeatherInfo }) => {
-  function onClickHandller(e) {
+  function onClickHandler(e) {
     fetchCityWeatherInfo(e.target.id, e.target.innerText);
   }
   return (
     <ListItem disablePadding key={cityKey}>
-      <ListItemButton onClick={onClickHandller} id={cityKey} variant="text">
+      <ListItemButton onClick={onClickHandler} id={cityKey} variant="text">
         {name}
       </ListItemButton>
     </ListItem>

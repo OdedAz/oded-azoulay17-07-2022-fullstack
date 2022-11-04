@@ -6,7 +6,7 @@ const endpoint = "favorite_cities";
 
 export const useFavoriteCitiesFetch = () => {
   const [favoriteCities, setFavoriteCities] = useState([]);
-  const [isFavorieCitiesLoading, setIsLoading] = useState(false);
+  const [isFavoriteCitiesLoading, setIsLoading] = useState(false);
 
   const fetchFavoriteCitiesList = async () => {
     try {
@@ -24,7 +24,7 @@ export const useFavoriteCitiesFetch = () => {
     fetchFavoriteCitiesList();
   });
 
-  const deleteCityFromFavoritsDB = async (id) => {
+  const deleteCityFromFavoritesDB = async (id) => {
     try {
       await onDelete(endpoint, { params: { id } });
     } catch (error) {
@@ -41,10 +41,10 @@ export const useFavoriteCitiesFetch = () => {
   };
   return {
     favoriteCities,
-    isFavorieCitiesLoading,
+    isFavoriteCitiesLoading,
     setFavoriteCities,
     fetchFavoriteCitiesList,
-    deleteCityFromFavoritsDB,
+    deleteCityFromFavoritesDB,
     createCityInFavoritesDB,
   };
 };

@@ -19,7 +19,7 @@ const Favorites = () => {
         </Grid>
         <Grid item xs={4}>
           <ResultSearchCitiesList
-            citiesNamesList={favoriteCities}
+            citiesNamesList={favoriteCities? favoriteCities: []}
             fetchCityWeatherInfo={fetchCityWeatherInfo}
             fetchCitiesList={fetchFavoriteCitiesList}
           />

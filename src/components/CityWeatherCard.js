@@ -13,7 +13,7 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
     favoriteCities,
     setFavoriteCities,
     createCityInFavoritesDB,
-    deleteCityFromFavoritsDB,
+    deleteCityFromFavoritesDB,
   } = useFavoriteCitiesFetch();
 
   const favoritClickHandler = (e) => {
@@ -24,7 +24,7 @@ const CityWeatherCard = ({ id, localizedName, degrees, weatherStatus }) => {
       newReducedArray.splice(indexOfCity, 1);
       setFavoriteCities(newReducedArray);
       // delete from DB
-      deleteCityFromFavoritsDB(id);
+      deleteCityFromFavoritesDB(id);
       // fetch favorite cities again
     } else {
       setIsLiked(true);
